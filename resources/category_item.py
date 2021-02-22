@@ -8,7 +8,7 @@ from flask_jwt_extended import (
     fresh_jwt_required
 )
 from models.category_item import CategoryItemModel
-from app_init import cache, make_cache_key
+from app_config import cache, make_cache_key
 
 
 class CategoryItem(Resource):

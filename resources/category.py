@@ -1,7 +1,7 @@
 import random
 from flask_restful import Resource
 from models.category import CategoryModel
-from app_init import cache, make_cache_key
+from app_config import cache, make_cache_key
 
 
 class Category(Resource):

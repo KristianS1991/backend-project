@@ -6,7 +6,7 @@ from resources.category import Category, CategoryList
 from resources.category_item import CategoryItem, CategoryItemList
 
 from blacklist import BLACKLIST
-from app_init import app, api
+from app_config import app, api
 
 
 @app.before_first_request
@@ -59,6 +59,7 @@ def revoked_token_callback():
         'description': 'The token has been revoked',
         'error': 'token_revoked'
     }), 401
+
 
 api.add_resource(Category, '/category/<string:name>')
 api.add_resource(CategoryList, '/categories')
