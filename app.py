@@ -4,6 +4,8 @@ from flask_jwt_extended import JWTManager
 from resources.user import UserRegister, User, UserLogin, UserLogout, TokenRefresh
 from resources.category import Category, CategoryList
 from resources.category_item import CategoryItem, CategoryItemList
+from resources.twitter_stream import TwitterStream
+from models.tweet import TweetModel
 
 from blacklist import BLACKLIST
 from app_config import app, api
@@ -61,6 +63,7 @@ def revoked_token_callback():
     }), 401
 
 
+api.add_resource(TwitterStream, '/twitter-stream')
 api.add_resource(Category, '/category/<string:name>')
 api.add_resource(CategoryList, '/categories')
 api.add_resource(CategoryItem, '/category-item/<string:name>')

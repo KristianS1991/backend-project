@@ -10,6 +10,8 @@ class CategoryItemModel(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     category = db.relationship('CategoryModel')
 
+    tweets = db.relationship('TweetModel', lazy='dynamic')
+
     def __init__(self, name, category_id):
         self.name = name
         self.category_id = category_id
@@ -18,7 +20,10 @@ class CategoryItemModel(db.Model):
         return {
             'id': self.id, 
             'name': self.name,
-            'category_id': self.category_id
+            'category_id': self.category_id,
+            'tweets': [
+                tweet.json() for tweet in self.tweets.all()
+            ]
         }
 
     @classmethod

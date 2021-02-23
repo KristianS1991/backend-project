@@ -2,6 +2,8 @@ import json
 import redis
 from tweet import Tweet
 
+# this file wont actually be used - 
+
 class TweetStore:
 
     # Redis Configuration
