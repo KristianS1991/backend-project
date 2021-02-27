@@ -1,4 +1,5 @@
 import random
+import tweepy
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import (
     jwt_required, 
@@ -10,6 +11,7 @@ from flask_jwt_extended import (
 from models.category import CategoryModel
 from models.category_item import CategoryItemModel
 from app_config import cache, make_cache_key
+from twitter.twitter_filter import StreamListener, api
 
 
 class TwitterStream(Resource):
@@ -61,27 +63,11 @@ class TwitterStream(Resource):
                         "message": "An error occurred inserting the category item."
                     }, 500
 
-        # TO DO:
-        # create the messages to be sent out via rabbitMQ and add them to a task queue
+        # WIP:
+        # Trigger the twitter filter stream listener below
+        stream_listener = StreamListener()
+        stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
+        stream.filter(track=[item for item in data['category_items']])
 
-        
 
         return 200
-
-
-
-# class CategoryItemList(Resource):
-#     @jwt_optional
-#     def get(self):
-#         user_id = get_jwt_identity()
-#         category_items = [
-#             category_item.json() for category_item in CategoryItemModel.find_all()
-#         ]
-#         if user_id:
-#             return {'category_items': category_items}, 200
-#         return {
-#             'category_items': [
-#                 category_item['name'] for category_item in category_items
-#             ],
-#             'message': 'More data available if you login'
-#         }, 200

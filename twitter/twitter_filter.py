@@ -53,12 +53,13 @@ class StreamListener(tweepy.StreamListener):
             return True
         else:
             return False
-        
+
 
     def on_error(self, status_code):
         if status_code == 420:
             return False
 
-stream_listener = StreamListener()
-stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=["trump"])
+# below is now being called on POST request from resources.twitter_stream
+# stream_listener = StreamListener()
+# stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
+# stream.filter(track=["food"])
