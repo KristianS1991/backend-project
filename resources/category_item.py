@@ -23,7 +23,7 @@ class CategoryItem(Resource):
     # @cache.cached(timeout=5, key_prefix=make_cache_key)
     def get(self, name):
         category_item = CategoryItemModel.find_by_name(name)
-        # below is just for practicing caching
+        # below is just for manually testing cache
         # item.price = random.randint(0,100)
         if category_item:
             return category_item.json()
