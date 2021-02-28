@@ -1,8 +1,6 @@
 import json
 import redis
-from tweet import Tweet
-
-# this file wont actually be used - 
+from tweet import Tweet 
 
 class TweetStore:
 
