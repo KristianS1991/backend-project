@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
-app.secret_key = 'kreeda' # app.config['JWT_SECRET_KEY']
+app.secret_key =  # manually removed this, To Do: move to a config file and add to .gitignore
 
 # initialize api
 api = Api(app)
