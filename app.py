@@ -19,7 +19,7 @@ jwt = JWTManager(app)  # not creating /auth
 
 @jwt.user_claims_loader
 def add_claims_to_jwt(identity):
-    if identity == 1: # instead of hard-coding, you should read from a config file or a database
+    if identity == 1: # To Do: instead of hard-coding, read from a config file or a database
         return {'is_admin': True}
     return {'is_admin': False}
 
