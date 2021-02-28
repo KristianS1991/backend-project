@@ -9,7 +9,7 @@ class Category(Resource):
     def get(self, name):
         category = CategoryModel.find_by_name(name)
         if category:
-            # below is just for practicing caching
+            # below is just for manually testing cache
             # store.name = store.name + str(random.randint(0,100))
             return category.json()
         return {'message': 'Category not found'}, 404
